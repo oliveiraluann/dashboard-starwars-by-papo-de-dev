@@ -26,7 +26,12 @@ async function preencherTabela() {
     const tableData=response.data.results;
     console.log(tableData);
     tableData.forEach(film => {
-        $('#films-table').append(`<tr><td>${film}</td></tr>`);
+        $('#films-table').append(`<tr>
+        <td>${film.title}</td>
+        <td>${moment(film.release_date).format('DD/MM/YYYY')}</td>
+        <td>${film.director}</td>
+        <td>${film.episode_id}</td>
+        </tr>`);
     })
 }
 
