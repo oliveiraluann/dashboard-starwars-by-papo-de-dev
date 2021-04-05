@@ -7,10 +7,10 @@ preencherContadores();
 preencherTabela();
 
 google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(desenharGrafico);
+google.charts.setOnLoadCallback(desenharGrafico);
 
       async function desenharGrafico() {
-        const response=swapiGet('vehicles/');
+        const response=await swapiGet('vehicles/');
         const vehiclesArray=response.data.results;
 
         const dataArray = [];
