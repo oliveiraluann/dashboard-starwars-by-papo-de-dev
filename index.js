@@ -6,6 +6,30 @@ const navesContador=document.getElementById("naves");
 preencherContadores();
 preencherTabela();
 
+google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(desenharGrafico);
+
+      async function desenharGrafico() {
+        const response=swapiGet('vehicles/');
+        const vehiclesArray=response.data.results;
+
+        const dataArray = [];
+        dataArray.push(["Veículos", "Passageiros"]);
+        vehiclesArray.forEach(vehicles => {
+            dataArray.push([vehicles.name, Number(vehicles.passengers)]);
+        })
+
+        var data = google.visualization.arrayToDataTable(dataArray);
+
+        var options = {
+          title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+
 function preencherContadores() {
     Promise.all([
         swapiGet("people/"), 
