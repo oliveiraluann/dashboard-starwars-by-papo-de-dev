@@ -22,7 +22,8 @@ google.charts.load('current', {'packages':['corechart']});
         var data = google.visualization.arrayToDataTable(dataArray);
 
         var options = {
-          title: 'My Daily Activities'
+          title: 'Maiores Veículos',
+          legend: "none"
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
